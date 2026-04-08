@@ -1,3 +1,12 @@
+---
+title: RL Interview System
+emoji: 💡
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # RL Interview System
 
 A complete Reinforcement Learning-driven interview system that uses free Hugging Face LLMs to dynamically generate technical interview questions based on the candidate's evolving state metrics (technical knowledge, communication, confidence, and fatigue).
