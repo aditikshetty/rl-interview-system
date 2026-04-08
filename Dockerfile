@@ -10,7 +10,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Environment Variables
-ENV HF_TOKEN=""
 ENV MODEL_NAME="openai/gpt-oss-20b"
 ENV API_BASE_URL="https://router.huggingface.co"
 
