@@ -1,0 +1,12 @@
+version: 1.0.0
+name: rl-interview-env
+description: An environment for simulating coding interviews with 3+ tasks.
+endpoints:
+  ping: /
+  reset: /reset
+  step: /step
+  state: /state
+tasks:
+  - python_task
+  - sql_task
+  - system_design_task

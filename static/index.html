@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI RL Interview System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>  RL Interview System</h1>
+            <p>Adaptive  Interviews </p>
+        </header>
+
+        <div id="controls">
+            <button id="start-btn" onclick="startInterview()">Start Interview</button>
+            <button id="next-btn" onclick="nextQuestion()" disabled>Next Question</button>
+        </div>
+
+        <div class="dashboard">
+            <div class="card question-card">
+                <h2>Current Question <span id="q-number"></span></h2>
+                <div id="difficulty-badge" class="badge">Awaiting Start</div>
+                <p id="question-text">Press "Start Interview" to generate your first technical question.</p>
+            </div>
+
+            <div class="card stats-card">
+                <h2>Candidate State</h2>
+                <div class="stat-row">
+                    <label>Technical:</label>
+                    <div class="progress-bar"><div id="tech-bar" class="fill" style="width: 0%;"></div></div>
+                    <span id="tech-val">0.00</span>
+                </div>
+                <div class="stat-row">
+                    <label>Communication:</label>
+                    <div class="progress-bar"><div id="comm-bar" class="fill" style="width: 0%;"></div></div>
+                    <span id="comm-val">0.00</span>
+                </div>
+                <div class="stat-row">
+                    <label>Confidence:</label>
+                    <div class="progress-bar"><div id="conf-bar" class="fill" style="width: 0%;"></div></div>
+                    <span id="conf-val">0.00</span>
+                </div>
+                <div class="stat-row warning">
+                    <label>Fatigue:</label>
+                    <div class="progress-bar"><div id="fatigue-bar" class="fill warning-fill" style="width: 0%;"></div></div>
+                    <span id="fatigue-val">0.00</span>
+                </div>
+            </div>
+
+            <div class="card rl-card">
+                <h2>RL Engine Status</h2>
+                <p>Reward: <span id="reward-val" class="highlight">0.00</span></p>
+                <p>Status: <span id="status-val" class="status-msg">Idle</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
