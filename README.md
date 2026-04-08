@@ -77,3 +77,6 @@ The `Dockerfile` is optimized for Hugging Face Spaces:
 
 ---
 **Created by**: [Aditi Shetty](https://github.com/aditikshetty)
+---
+**Deployment Update:** Automated sync to Hugging Face Spaces initiated on April 8, 2026.
+
