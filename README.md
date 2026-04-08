@@ -50,17 +50,30 @@ This system simulates an assessment engine where answers are auto-evaluated (sim
 5. **Access Application**:
     Navigate to `http://localhost:8000/ui` in your web browser. 
 
-## Docker & Deployment to Hugging Face Spaces
+## Deployment
 
-### Build and Run with Docker
-```bash
-docker build -t rl-interview .
-docker run -p 8000:8000 -e HF_TOKEN="your_token_here" rl-interview
-```
+This project is configured for automated deployment using GitHub Actions.
 
-### Deploy to Hugging Face Spaces
-This completely containerized architecture is built for Hugging Face Docker Spaces!
-1. Go to Hugging Face -> New Space.
-2. Select **Docker** as the Space SDK.
-3. In the space Settings -> "Variables and secrets", add your Secret named `HF_TOKEN`.
-4. Upload or push all project files, and the container will build and serve your app. *Note: If HF spaces complain about port 8000, you can adapt the EXPOSE inside the Dockerfile to 7860 and change the uvicorn port.*
+### 1. GitHub to Hugging Face Sync
+The repository includes a GitHub Action ([sync_to_hf.yml](.github/workflows/huggingface_sync.yml)) that automatically pushes your code to Hugging Face Spaces whenever you push to the `master` branch.
+
+**Setup Instructions:**
+1.  **Hugging Face Token**: Generate a **Write** token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+2.  **GitHub Secrets**: In your GitHub repository, go to `Settings` -> `Secrets and variables` -> `Actions` and add a new secret:
+    *   `HF_TOKEN`: Paste your Hugging Face Write token here.
+3.  **Push to GitHub**: Once the secret is added, any push to the `master` branch will trigger the sync.
+
+### 2. Manual Deployment to Hugging Face Spaces
+If you prefer manual deployment:
+1.  Create a new **Docker Space** on Hugging Face.
+2.  In the Space **Settings**, add a **Secret** named `HF_TOKEN` (this is used by the application to access the LLM API).
+3.  Upload the project files or use `git push` directly to the HF Space repository.
+
+### 3. Docker Configuration
+The `Dockerfile` is optimized for Hugging Face Spaces:
+-   **Port**: Listens on `7860` (HF default).
+-   **Base Image**: Lightweight `python:3.11-slim`.
+-   **Streaming**: Supports real-time LLM interaction.
+
+---
+**Created by**: [Aditi Shetty](https://github.com/aditikshetty)
