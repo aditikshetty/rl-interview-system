@@ -1,0 +1,23 @@
+
+name: Sync to Hugging Face Hub
+on:
+  push:
+    branches: [master]
+  force_push:
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GIT_SYNC_URL: ${{ secrets.GIT_SYNC }}
+        run: |
+          git push --force https://aditikshetty:$HF_TOKEN@$GIT_SYNC_URL master
